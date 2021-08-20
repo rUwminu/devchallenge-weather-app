@@ -4,6 +4,8 @@ import { HTML5Backend } from 'react-dnd-html5-backend'
 import './App.css'
 import './styles.css'
 
+
+import MixPage from './components/Pages/Home'
 import MainPage1 from './components/cw1/Pages/MainPage'
 import MainPage2 from './components/cw2/Pages/MainPage'
 import MainPage3 from './components/cw3/Pages/MainPage'
@@ -14,7 +16,7 @@ function App() {
   return (
     <DndProvider backend={HTML5Backend}>
       <div className='App'>
-        <MainPage5 />
+        <MixPage />
       </div>
     </DndProvider>
   )

@@ -1,25 +1,72 @@
-import React from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import tw from 'twin.macro'
 import styled from 'styled-components'
 
 import Heroimg from '../../Assets/Snippet.png'
 
 const Hero = () => {
+  const targetRef = useRef()
+  const [isReveal, setIsReveal] = useState(false)
+
+  const handleReveal = () => {
+    var revealTop = targetRef.current.getBoundingClientRect().top
+    var windowheight = window.innerHeight
+    var revealpoint = 50
+
+    if (revealTop < windowheight - revealpoint) {
+      setIsReveal(true)
+    } else {
+      setIsReveal(false)
+    }
+  }
+
+  useEffect(() => {
+    window.addEventListener('load', handleReveal)
+  }, [])
+
   return (
     <Section>
-      <HeroContainer>
+      <HeroContainer ref={targetRef}>
         <HeroInfo>
-          <h1>Gorgeous Code Snippets</h1>
-          <p>
+          <h1
+            className={`${
+              !isReveal
+                ? 'translate-y-full opacity-0'
+                : 'translate-y-0 opacity-100'
+            }`}
+          >
+            Gorgeous Code Snippets
+          </h1>
+          <p
+            className={`delay-200 ${
+              !isReveal
+                ? 'translate-y-full opacity-0'
+                : 'translate-y-0 opacity-100'
+            }`}
+          >
             With Snipper, create fully customizable code snippets in a matter of
             seconds right from your browser.
           </p>
-          <button>
-            Get Started <span>- it's free</span>
-          </button>
-          <p>No creafit card required</p>
+          <div
+            className={`delay-500 transition duration-500 ease-in-out ${
+              !isReveal
+                ? 'translate-y-full opacity-0'
+                : 'translate-y-0 opacity-100'
+            }`}
+          >
+            <button>
+              Get Started <span>- it's free</span>
+            </button>
+            <p>No creafit card required</p>
+          </div>
         </HeroInfo>
-        <HeroImage>
+        <HeroImage
+          className={` ${
+            !isReveal
+              ? 'translate-y-full opacity-0'
+              : 'translate-y-0 opacity-100'
+          }`}
+        >
           <img src={Heroimg} alt='' />
         </HeroImage>
       </HeroContainer>
@@ -43,6 +90,8 @@ const Section = styled.section`
 `
 
 const HeroContainer = styled.div`
+  z-index: 0;
+
   ${tw`
     px-4
     lg:px-0
@@ -73,6 +122,8 @@ const HeroInfo = styled.div`
       md:text-5xl
       lg:text-6xl
       font-bold
+      transition
+      duration-500
     `}
   }
 
@@ -85,6 +136,8 @@ const HeroInfo = styled.div`
       max-w-lg
       md:max-w-xl
       lg:max-w-2xl
+      transition
+      duration-500
     `}
   }
 
@@ -97,10 +150,9 @@ const HeroInfo = styled.div`
       text-white
       font-semibold
       rounded-md
-      transition-all
+      transition
       duration-200
       ease-in-out
-      hover:translate-y-2
       hover:bg-gray-800
     `}
 
@@ -117,6 +169,9 @@ const HeroImage = styled.div`
   ${tw`
     w-full
     h-full
+    delay-700
+    transition
+    duration-700
   `}
 `
 

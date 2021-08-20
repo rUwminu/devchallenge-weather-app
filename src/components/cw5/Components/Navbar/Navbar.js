@@ -130,6 +130,7 @@ const Nav = styled.div`
     transition-all
     duration-500
     ease-in-out
+    z-30
   `}
 `
 

@@ -1,14 +1,39 @@
-import React from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import tw from 'twin.macro'
 import styled from 'styled-components'
 
 import FeatureImg from '../../Assets/Custom.png'
 
 const Info = () => {
+  const targetRef = useRef()
+  const [isReveal, setIsReveal] = useState(false)
+
+  const handleReveal = () => {
+    var revealTop = targetRef.current.getBoundingClientRect().top
+    var windowheight = window.innerHeight
+    var revealpoint = 300
+
+    if (revealTop < windowheight - revealpoint) {
+      setIsReveal(true)
+    } else {
+      setIsReveal(false)
+    }
+  }
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleReveal)
+  }, [])
+
   return (
     <Section>
-      <FeatureContainer>
-        <FeatureInfo>
+      <FeatureContainer ref={targetRef}>
+        <FeatureInfo
+          className={`${
+            !isReveal
+              ? '-translate-x-40 opacity-0'
+              : 'translate-y-0 opacity-100'
+          }`}
+        >
           <h1>A fully customizable snippet editor</h1>
           <p>
             Lorem ipsum dolor sit, amet consectetur adipisicing elit. Debitis
@@ -20,7 +45,13 @@ const Info = () => {
             Get Started<span> - its free</span>
           </Button>
         </FeatureInfo>
-        <FeatureImage>
+        <FeatureImage
+          className={`${
+            !isReveal
+              ? 'translate-x-full opacity-0'
+              : 'translate-x-0 opacity-100'
+          }`}
+        >
           <img src={FeatureImg} alt='' />
         </FeatureImage>
       </FeatureContainer>
@@ -53,6 +84,9 @@ const FeatureContainer = styled.div`
 const FeatureInfo = styled.div`
   ${tw`
     w-full
+    transition
+    duration-700
+    ease-in-out
   `}
 
   h1 {
@@ -84,6 +118,11 @@ const FeatureImage = styled.div`
     w-auto
     mb-12
     md:mb-0
+    delay-500
+    transition
+    duration-500
+    ease-in-out
+    
   `}
 
   img {

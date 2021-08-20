@@ -2,7 +2,7 @@ import React from 'react'
 import tw from 'twin.macro'
 import styled from 'styled-components'
 
-import SearchBar from '../SearchBar'
+import SearchBar from '../Mix/SearchBar'
 
 import BookData from '../../asset/Data.json'
 
