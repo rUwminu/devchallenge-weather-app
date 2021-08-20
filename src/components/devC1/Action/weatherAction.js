@@ -92,8 +92,6 @@ export const getLocationWeather = (worldid) => async (dispatch) => {
         `https://www.metaweather.com/api/location/${worldid}/`
       )
 
-      console.log(data)
-
       if (data) {
         dispatch({
           type: WEATHER_INFO_SUCCESS,

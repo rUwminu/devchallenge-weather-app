@@ -77,11 +77,21 @@ const Dashboard = () => {
                   if (weather_state_name === 'Showers') {
                     return (
                       <img
-                        src={Clear}
+                        src={Shower}
                         className='w-full max-w-[7rem] ml-3'
                         alt=''
                       />
                     )
+                  } else if (weather_state_name === 'Clear') {
+                    return (
+                      <img
+                        src={Clear}
+                        className='w-full max-w-[7rem] ml-3 -translate-y-5'
+                        alt=''
+                      />
+                    )
+                  } else if (weather_state_name === 'Heavy Rain') {
+                    return <img src={HeavyRain} className='w-full' alt='' />
                   } else if (weather_state_name === 'Heavy Cloud') {
                     return (
                       <img
@@ -90,12 +100,18 @@ const Dashboard = () => {
                         alt=''
                       />
                     )
-                  } else if (weather_state_name === 'Heavy Rain') {
-                    return <img src={HeavyRain} className='w-full' alt='' />
                   } else if (weather_state_name === 'Light Cloud') {
                     return <img src={LightCloud} className='w-full' alt='' />
                   } else if (weather_state_name === 'Light Rain') {
                     return <img src={LightRain} className='w-full' alt='' />
+                  } else if (weather_state_name === 'Hail') {
+                    return (
+                      <img
+                        src={Hail}
+                        className='w-full max-w-[7rem] ml-3 -translate-y-5'
+                        alt=''
+                      />
+                    )
                   } else if (weather_state_name === 'Sleet') {
                     return (
                       <img
@@ -118,12 +134,12 @@ const Dashboard = () => {
                 }
               }
 
+              console.log(WeatherImg())
+
               return (
                 <Card>
                   <h1>{applicable_date}</h1>
-                  <div className='weather-img'>
-                    <WeatherImg />
-                  </div>
+                  <div className='weather-img'><WeatherImg /></div>
                   <div className='weather-temp'>
                     <h1>{max_temp.toFixed(0)}&#8451;</h1>
                     <h1>{min_temp.toFixed(0)}&#8451;</h1>

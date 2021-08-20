@@ -146,6 +146,8 @@ const SidebarSearch = () => {
               const WeatherImg = () => {
                 if (weather_state_name) {
                   if (weather_state_name === 'Showers') {
+                    return <img src={Shower} alt='' />
+                  } else if (weather_state_name === 'Clear') {
                     return <img src={Clear} alt='' />
                   } else if (weather_state_name === 'Heavy Cloud') {
                     return <img src={HeavyCloud} alt='' />
@@ -155,6 +157,8 @@ const SidebarSearch = () => {
                     return <img src={LightCloud} alt='' />
                   } else if (weather_state_name === 'Light Rain') {
                     return <img src={LightRain} alt='' />
+                  } else if (weather_state_name === 'Hail') {
+                    return <img src={Hail} alt='' />
                   } else if (weather_state_name === 'Sleet') {
                     return <img src={Sleet} alt='' />
                   } else if (weather_state_name === 'Snow') {
@@ -164,6 +168,7 @@ const SidebarSearch = () => {
                   }
                 }
               }
+
               return (
                 <>
                   <ImageContainer>
