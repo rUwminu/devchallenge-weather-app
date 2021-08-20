@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/devchallenge-wheather-app/static/css/main.d284883a.chunk.css",
-    "main.js": "/devchallenge-wheather-app/static/js/main.3992ccb1.chunk.js",
-    "main.js.map": "/devchallenge-wheather-app/static/js/main.3992ccb1.chunk.js.map",
+    "main.js": "/devchallenge-wheather-app/static/js/main.87955bd8.chunk.js",
+    "main.js.map": "/devchallenge-wheather-app/static/js/main.87955bd8.chunk.js.map",
     "runtime-main.js": "/devchallenge-wheather-app/static/js/runtime-main.7b64bf64.js",
     "runtime-main.js.map": "/devchallenge-wheather-app/static/js/runtime-main.7b64bf64.js.map",
     "static/css/2.86d8139d.chunk.css": "/devchallenge-wheather-app/static/css/2.86d8139d.chunk.css",
@@ -61,6 +61,6 @@
     "static/css/2.86d8139d.chunk.css",
     "static/js/2.69e3aea1.chunk.js",
     "static/css/main.d284883a.chunk.css",
-    "static/js/main.3992ccb1.chunk.js"
+    "static/js/main.87955bd8.chunk.js"
   ]
 }
