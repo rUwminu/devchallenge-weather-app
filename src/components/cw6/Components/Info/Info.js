@@ -7,15 +7,19 @@ import { data, reviews } from '../../Assets/dumbdata'
 const Info = () => {
   const targetRef = useRef()
   const [isReveal, setIsReveal] = useState(false)
-  const infoCard = document.querySelectorAll('.info-card')
 
   const handleReveal = () => {
     var revealTop = targetRef.current.getBoundingClientRect().top
+    var revealBottom = targetRef.current.getBoundingClientRect().bottom
     var windowheight = window.innerHeight
     var revealpoint = 160
 
-    if (revealTop < windowheight - revealpoint) {
-      setIsReveal(true)
+    if (revealBottom > 0) {
+      if (revealTop < windowheight - revealpoint) {
+        setIsReveal(true)
+      } else {
+        setIsReveal(false)
+      }
     } else {
       setIsReveal(false)
     }
@@ -37,7 +41,12 @@ const Info = () => {
               const { id, img, title, body } = x
 
               return (
-                <InfoCard className={`${isReveal && 'show'}`} key={id} isReveal={isReveal} index={index}>
+                <InfoCard
+                  className={`${isReveal && 'show'}`}
+                  key={id}
+                  isReveal={isReveal}
+                  index={index}
+                >
                   <img src={img} alt='' />
                   <h2>{title}</h2>
                   <p>{body}</p>
