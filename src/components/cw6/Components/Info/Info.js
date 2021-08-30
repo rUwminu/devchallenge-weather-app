@@ -1,26 +1,43 @@
-import React from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import tw from 'twin.macro'
 import styled from 'styled-components'
 
 import { data, reviews } from '../../Assets/dumbdata'
 
 const Info = () => {
-  const infoContainer = document.querySelector('.info-container')
+  const targetRef = useRef()
+  const [isReveal, setIsReveal] = useState(false)
   const infoCard = document.querySelectorAll('.info-card')
 
+  const handleReveal = () => {
+    var revealTop = targetRef.current.getBoundingClientRect().top
+    var windowheight = window.innerHeight
+    var revealpoint = 160
+
+    if (revealTop < windowheight - revealpoint) {
+      setIsReveal(true)
+    } else {
+      setIsReveal(false)
+    }
+  }
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleReveal)
+  }, [])
+
   return (
-    <InfoSection>
+    <InfoSection ref={targetRef}>
       <InnerContainer>
         <FeatureContainer>
           <h1 className='info-title'>
             Features that help you <br /> Tweet smarter
           </h1>
           <InfoGrid className='info-container'>
-            {data.map((x) => {
+            {data.map((x, index) => {
               const { id, img, title, body } = x
 
               return (
-                <InfoCard key={id} className='info-card'>
+                <InfoCard className={`${isReveal && 'show'}`} key={id} isReveal={isReveal} index={index}>
                   <img src={img} alt='' />
                   <h2>{title}</h2>
                   <p>{body}</p>
@@ -96,6 +113,7 @@ const InfoCard = styled.div`
     border-2
     border-gray-200
     rounded-md
+    opacity-0
   `}
 
   img {
@@ -117,6 +135,22 @@ const InfoCard = styled.div`
     ${tw`
       text-gray-700
     `}
+  }
+
+  animation: ${(props) =>
+    props.isReveal
+      ? `infoFade 0.5s ease forwards ${props.index / 7 + 0.5}s`
+      : ``};
+
+  @keyframes infoFade {
+    from {
+      opacity: 0;
+      transform: translateY(100px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0px);
+    }
   }
 `
 
