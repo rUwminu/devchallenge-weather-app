@@ -9,7 +9,6 @@ import Menu from '../../Assets/Menu.svg'
 const Navbar = () => {
   let lastScroll = 0
 
-  const [isSearch, setIsSearch] = useState(false)
   const [isActive, setIsActive] = useState(false)
   const [isScrollTop, setIsScrollTop] = useState(true)
   const [isMobile, setIsMobile] = useState()

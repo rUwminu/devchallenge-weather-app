@@ -6,7 +6,7 @@ import './styles.css'
 
 // import MixPage from './components/Pages/Home'
 // import MainPage1 from './components/cw1/Pages/MainPage'
-// import MainPage2 from './components/cw2/Pages/MainPage'
+ import MainPage2 from './components/cw2/Pages/MainPage'
 // import MainPage3 from './components/cw3/Pages/MainPage'
 // import MainPage4 from './components/cw4/Pages/MainPage'
 // import MainPage5 from './components/cw5/Pages/MainPage'
@@ -16,7 +16,7 @@ function App() {
   return (
     <DndProvider backend={HTML5Backend}>
       <div className='App'>
-        <MainPage6 />
+        <MainPage2 />
       </div>
     </DndProvider>
   )
